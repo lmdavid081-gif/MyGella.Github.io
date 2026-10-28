@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Little Question for You ❤️</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 24px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+      font-family: Arial, sans-serif;
+      color: #7d2444;
+      background: linear-gradient(135deg, #ffe0eb, #ff9ebd, #ffd6e7);
+    }
+
+    .card {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 390px;
+      padding: 32px 22px;
+      border: 2px solid rgba(255,255,255,.8);
+      border-radius: 28px;
+      background: rgba(255,255,255,.84);
+      box-shadow: 0 15px 45px rgba(153, 42, 85, .2);
+      text-align: center;
+    }
+
+    .heart {
+      font-size: 68px;
+      animation: heartbeat 1.2s infinite;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    h1 {
+      font-size: 27px;
+      margin: 15px 0;
+    }
+
+    h2 {
+      font-size: 23px;
+      line-height: 1.4;
+      margin: 22px 0 12px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .buttons {
+      margin-top: 24px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    button {
+      padding: 14px 23px;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform .2s;
+    }
+
+    button:active {
+      transform: scale(.94);
+    }
+
+    #yes {
+      color: white;
+      background: #ec4f87;
+      box-shadow: 0 5px 15px rgba(236,79,135,.3);
+    }
+
+    #no {
+      color: #b52f61;
+      background: #ffe1ec;
+    }
+
+    #result {
+      display: none;
+      margin-top: 25px;
+      padding: 20px 14px;
+      border-radius: 20px;
+      background: #fff0f6;
+      line-height: 1.8;
+      animation: appear .5s ease;
+    }
+
+    #result h2 {
+      color: #e33f7b;
+      margin-top: 0;
+    }
+
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .footer {
+      margin-top: 25px;
+      font-size: 12px;
+      color: #a94d70;
+    }
+
+    .floating-heart {
+      position: fixed;
+      bottom: -40px;
+      z-index: 1;
+      pointer-events: none;
+      animation: floatUp 5s linear forwards;
+    }
+
+    @keyframes floatUp {
+      to {
+        transform: translateY(-110vh) rotate(25deg);
+        opacity: 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="card">
+    <div class="heart">💗</div>
+
+    <h1>Hey, Cutie! 🥹💕</h1>
+
+    <p>
+      Sooo... I have a tiny question for you.
+      And before you ask, YES, I've been thinking
+      about this. 😂❤️
+    </p>
+
+    <p>
+      I think it would be really cute if we had
+      our own little daily tradition — sharing
+      snaps, random moments, and keeping a streak
+      alive together. 🔥
+    </p>
+
+    <h2>Will you be my streak partner? 🫶🏽</h2>
+
+    <p>One snap a day, a little smile every day. 💕</p>
+
+    <div class="buttons">
+      <button id="yes" onclick="sayYes()">
+        YES, OF COURSE! 💗
+      </button>
+
+      <button id="no" onclick="sayNo()">
+        Let me think 😂
+      </button>
+    </div>
+
+    <section id="result" aria-live="polite"></section>
+
+    <div class="footer">
+      Made with a little courage and lots of love. 💌
+    </div>
+  </main>
+
+  <script>
+    function sayYes() {
+      const result = document.getElementById("result");
+
+      result.innerHTML = `
+        <h2>WAIT... YOU SAID YES?! 🥹💗</h2>
+        <p>
+          Okay, this just made me smile for real. 🥰
+        </p>
+        <p>
+          It's official! 🔥💕 Here's to daily snaps,
+          silly faces, random updates, inside jokes,
+          and a streak that keeps getting longer.
+        </p>
+        <p>
+          And maybe... you'll become one of my
+          favourite notifications. 👀❤️
+        </p>
+        <h2>Our little streak starts now! 🫶🏽</h2>
+        <p>Screenshot this moment if you want. 📸</p>
+      `;
+
+      result.style.display = "block";
+      document.getElementById("yes").textContent =
+        "SHE SAID YES! 💗";
+
+      heartsCelebration();
+
+      result.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+      });
+    }
+
+    function sayNo() {
+      const result = document.getElementById("result");
+
+      result.innerHTML = `
+        <h2>HAHA, TAKE YOUR TIME 😂💕</h2>
+        <p>
+          No pressure, cutie. 🫶🏽
+          I just thought having a little streak
+          together would be sweet. 💗
+        </p>
+        <p>You can still say yes if you change your mind. 👀</p>
+      `;
+
+      result.style.display = "block";
+    }
+
+    function heartsCelebration() {
+      const emojis = ["💗", "💕", "💖", "💘", "💞", "❤️"];
+
+      for (let i = 0; i < 24; i++) {
+        setTimeout(() => {
+          const heart = document.createElement("div");
+
+          heart.className = "floating-heart";
+          heart.textContent =
+            emojis[Math.floor(Math.random() * emojis.length)];
+
+          heart.style.left = Math.random() * 100 + "vw";
+          heart.style.fontSize = (18 + Math.random() * 22) + "px";
+          heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+
+          document.body.appendChild(heart);
+
+          heart.addEventListener("animationend", () => {
+            heart.remove();
+          });
+        }, i * 100);
+      }
+    }
+  </script>
+</body>
+</html>
